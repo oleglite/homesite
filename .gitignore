@@ -1,0 +1,11 @@
+# database
+db.sqlite3
+
+
+################### Python
+*.py[cod]
+
+
+################### PyCharm
+.idea/
+
