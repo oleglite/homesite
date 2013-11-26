@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>{{ page_title }}</title>
 
-    <link href="{{ STATIC_URL }}styles/style.css" rel="stylesheet">
+    <link media="screen, handheld, projection, tv" href="{{ STATIC_URL }}styles/style.css" rel="stylesheet">
+    <link media="print" href="{{ STATIC_URL }}styles/style_print.css" rel="stylesheet">
 </head>
 
 <body>

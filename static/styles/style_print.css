@@ -1,0 +1,7 @@
+@import url("global.css");
+@import url("content.css");
+
+
+.header {
+    display: none;
+}

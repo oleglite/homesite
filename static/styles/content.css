@@ -8,11 +8,6 @@
     font-weight: 500;
 }
 
-.content__title-small {
-    color: #999;
-    font-size: 17px;
-}
-
 .person_attrs, .paragraph__body, .subparaghaph__body {
     margin-left: 20px;
 }

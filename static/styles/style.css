@@ -1,6 +1,4 @@
-/*@import url("../bootstrap/css/bootstrap.min.css");*/
-/*@import url("../bootstrap/css/bootstrap-theme.css");*/
-
+@import url("global.css");
 @import url("header.css");
 @import url("content.css");
 
@@ -11,28 +9,6 @@ body {
     padding-bottom: 20px;
 
     background-color: #eee;
-}
-
-a {
-    color: royalblue;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
-h1, h2, h3, h4, h5, b {
-    color: #333333;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin-bottom: 6px;
-}
-
-h4 {
-    font-size: 18px;
-    font-weight: 500;
 }
 
 #page {
