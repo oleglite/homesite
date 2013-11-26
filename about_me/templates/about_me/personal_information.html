@@ -1,0 +1,40 @@
+<div class="person_attrs">
+    <!-- Location -->
+    <div>{{ person.location }}</div>
+
+    <!-- Email -->
+    <div>
+        <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+    </div>
+</div>
+
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Кратко о себе</h4>
+    </div>
+    <div class="paragraph__body">
+        {{ person.summary }}
+    </div>
+</div>
+
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Навыки</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for skill, competences in person.skills.iteritems %}
+            {% include "about_me/skill.html" with skill=skill competences=competences %}
+        {% endfor %}
+    </div>
+</div>
+
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Образование</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for education in person.education_set.all %}
+            {% include "about_me/education.html" with education=education %}
+        {% endfor %}
+    </div>
+</div>

@@ -16,17 +16,17 @@ class EducationModelTest(TestCase):
         self.location = Location.objects.create(city='London', country='Britan')
 
     def test_is_current__completion_date_is_none(self):
-        edu = Education(name='Hogwarts', location=self.location,
+        edu = Education(name='Hogwarts',
                         start_date=date(20, 10, 2013))
         self.assertTrue(edu.is_current())
 
     def test_is_current__completion_date_is_in_past(self):
-        edu = Education(name='Hogwarts', location=self.location,
+        edu = Education(name='Hogwarts',
                         start_date=date(20, 10, 2013), completion_date=date(22, 10, 2013))
         self.assertFalse(edu.is_current())
 
     def test_is_current__completion_date_is_in_future(self):
-        edu = Education(name='Hogwarts', location=self.location,
+        edu = Education(name='Hogwarts',
                         start_date=date(20, 10, 2013), completion_date=date(20, 10, 2200))
         self.assertTrue(edu.is_current())
 

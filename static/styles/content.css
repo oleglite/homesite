@@ -1,0 +1,27 @@
+.content {
+    position: relative;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+}
+
+.content__title {
+    font-weight: 500;
+}
+
+.content__title-small {
+    color: #999;
+    font-size: 17px;
+}
+
+.person_attrs, .paragraph__body, .subparaghaph__body {
+    margin-left: 20px;
+}
+
+.subparaghaph__title {
+    font-weight: bold;
+    color: #333;
+}
+
+.subparaghaph__body {
+    margin-bottom: 8px;
+}
