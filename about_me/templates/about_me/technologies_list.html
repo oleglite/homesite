@@ -1,0 +1,8 @@
+{% for technology in technologies %}
+    {% if technology.technology_url %}
+        <a href="{{ technology.technology_url }}">
+            {{ technology }}</a>{% if not forloop.last %}, {% endif %}
+    {% else %}
+        {{ technology }}{% if not forloop.last %}, {% endif %}
+    {% endif %}
+{% endfor %}

@@ -106,7 +106,7 @@ class Education(models.Model):
 
 class Skill(models.Model):
     name =  models.CharField(max_length=255)
-    order = models.IntegerField(default=10)
+    order = models.IntegerField(default=9)
 
     class Meta:
         ordering = ['order']
@@ -141,7 +141,7 @@ class TechnologyCompetence(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    order = models.IntegerField()
+    order = models.IntegerField(default=9)
     client = models.CharField(max_length=255, blank=True)
     project_url = models.URLField('Project URL', blank=True)
     technologies = models.ManyToManyField(Technology)

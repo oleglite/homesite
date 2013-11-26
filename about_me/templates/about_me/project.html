@@ -1,0 +1,26 @@
+<div class="subparaghaph">
+    <div class="subparaghaph__title">
+        {% if project.project_url %}
+            <a href="{{ project.project_url }}">{{ project }}</a>
+        {% else %}
+            {{ project }}
+        {% endif %}
+    </div>
+    <div class="subparaghaph__body">
+        {% if project.client %}
+            Для кого: {{ project.client }}<br>
+        {% endif %}
+
+        {% if project.technologies %}
+            Технологии: {% include "about_me/technologies_list.html" with technologies=project.technologies.all %}<br>
+        {% endif %}
+
+        {% if project.project_url %}
+            Страница проекта: <a href="{{ project.project_url }}">{{ project.project_url }}</a><br>
+        {% endif %}
+
+        {% if project.summary %}
+            {{ project.summary }}<br>
+        {% endif %}
+    </div>
+</div>
