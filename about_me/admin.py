@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Education, Location, PersonalInfo, Project, Skill, Technology, TechnologyCompetence, School
+from models import Education, Location, PersonalInfo, Project, Skill, Technology, TechnologyCompetence, School, Contact
 from forms import EducationForm
 
 
@@ -18,4 +18,4 @@ class PersonalInfoAdmin(admin.ModelAdmin):
     inlines = [EducationInline, TechnologyCompetenceInline]
 
 admin.site.register(PersonalInfo, PersonalInfoAdmin)
-admin.site.register([Location, Project, Technology, School, Skill])
+admin.site.register([Location, Project, Technology, School, Skill, Contact])

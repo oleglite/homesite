@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'south',
 
     'about_me',
+    'templatetags.navigation',
+    'templatetags.html_tags',
 )
 
 MIDDLEWARE_CLASSES = (

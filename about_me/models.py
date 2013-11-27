@@ -2,10 +2,15 @@ import datetime
 import collections
 
 from django.db import models
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 import validators
 
 
 # https://github.com/ckelly/django-resume/blob/master/django_resume/resume/models.py
+
+validate_url = URLValidator()
+
 
 def formatted_date(self, date):
     return date.strftime("%b %Y")
@@ -24,7 +29,6 @@ class PersonalInfo(models.Model):
     last_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     nickname = models.CharField(max_length=255, blank=True)
-    email = models.EmailField()
 
     location = models.ForeignKey(Location)
     birthday = models.DateField()
@@ -58,8 +62,37 @@ class PersonalInfo(models.Model):
 
         return skills
 
+    def email(self):
+        try:
+            email = self.contact_set.get(name='email')
+        except PersonalInfo.MultipleObjectsReturned:
+            email = self.contact_set.filter(name='email')[0]
+        except ObjectDoesNotExist:
+            return ''
+        return email.value
+
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
+    person = models.ForeignKey(PersonalInfo)
+    order = models.SmallIntegerField(default=9)
+
+    class Meta:
+        ordering = ['order']
+
+    def is_link(self):
+        try:
+            validate_url(self.value)
+            return True
+        except ValidationError, e:
+            return False
+
+    def __unicode__(self):
+        return u'%s: %s' % (self.name, self.value)
 
 
 class School(models.Model):

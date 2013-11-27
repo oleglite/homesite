@@ -1,12 +1,14 @@
+{% load navigation %}
+
 <div class="header">
     <div class="header__title">
         <h2 class="header__title_text">{{ page_title }}</h2>
     </div>
     <div class="header__nav-buttons">
         <div class="menu"><!--
-            --><a class="menu__link menu__link_active" href="#">Home</a><!--
-            --><a class="menu__link" href="#">About</a><!--
-            --><a class="menu__link" href="#">Contact</a>
+            --><a class="menu__link {% active request "^/$" %}" href="#">Home</a><!--
+            --><a class="menu__link {% active request "^/about_me$" %}" href="{% url 'about_me' %}">About Me</a><!--
+            --><a class="menu__link {% active request "^/contacts$" %}" href="{% url 'contacts' %}">Contacts</a>
         </div>
     </div>
 </div>

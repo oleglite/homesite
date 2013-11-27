@@ -4,7 +4,9 @@
 
     <!-- Email -->
     <div>
-        <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+        {% if person.email %}
+            <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+        {% endif %}
     </div>
 </div>
 

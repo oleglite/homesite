@@ -44,7 +44,7 @@
     text-decoration: underline;
 }
 
-.menu__link_active {
+.menu__link.active {
     /*background-color: #f3f3f3;*/
     text-decoration: underline;
 }
