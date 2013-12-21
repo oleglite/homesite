@@ -1,3 +1,5 @@
+{% load markdown_filter %}
+
 <div class="person_attrs">
     <!-- Location -->
     <div>{{ person.location }}</div>
@@ -12,10 +14,12 @@
 
 <div class="paragraph">
     <div class="paragraph__title">
-        <h4>Кратко о себе</h4>
+        <h4>О себе</h4>
     </div>
     <div class="paragraph__body">
-        {{ person.summary }}
+        <div class="markdown_block">
+            {{ person.summary|use_markdown }}
+        </div>
     </div>
 </div>
 

@@ -69,7 +69,7 @@ class PersonalInfo(models.Model):
             email = self.contact_set.filter(name='email')[0]
         except ObjectDoesNotExist:
             return ''
-        return email.value
+        return email
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
