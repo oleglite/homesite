@@ -14,7 +14,7 @@ body {
 #page {
     margin: 0 auto 60px auto;
     background-color: white;
-    padding: 0px 40px 40px 40px;
+    padding: 0 50px 40px 50px;
     border: 1px solid #e4e4e4;
-    max-width: 780px;
+    max-width: 740px;
 }

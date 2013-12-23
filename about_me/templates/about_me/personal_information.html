@@ -1,5 +1,6 @@
 {% load markdown_filter %}
 
+<!-- PERSONAL ATTRIBUTES -->
 <div class="person_attrs">
     <!-- Location -->
     <div>{{ person.location }}</div>
@@ -12,6 +13,7 @@
     </div>
 </div>
 
+<!-- ABOUT ME -->
 <div class="paragraph">
     <div class="paragraph__title">
         <h4>О себе</h4>
@@ -23,6 +25,7 @@
     </div>
 </div>
 
+<!-- SKILLS -->
 <div class="paragraph">
     <div class="paragraph__title">
         <h4>Навыки</h4>
@@ -31,9 +34,22 @@
         {% for skill, competences in person.skills.iteritems %}
             {% include "about_me/skill.html" %}
         {% endfor %}
+
+        <!-- SKILLS DETAILED -->
+        <div class="detailed_block skills_detailed">
+            <div id="skills_detailed_button" class="detailed_button">Подробнее...</div>
+            <div class="detailed_content">
+                <h4 class="centered_header">Соотношения навыков</h4>
+                {% for skill, competences in person.skills.iteritems %}
+                    {% include "about_me/skill_chart.html" %}
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
 </div>
 
+<!-- PROJECTS -->
 <div class="paragraph">
     <div class="paragraph__title">
         <h4>Проекты</h4>
@@ -45,6 +61,7 @@
     </div>
 </div>
 
+<!-- EDUCATION -->
 <div class="paragraph">
     <div class="paragraph__title">
         <h4>Образование</h4>

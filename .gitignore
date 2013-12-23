@@ -1,6 +1,9 @@
 # database
 db.sqlite3
 
+# js libs
+static/js/libs
+
 
 ################### Python
 *.py[cod]

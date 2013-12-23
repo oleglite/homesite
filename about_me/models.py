@@ -41,8 +41,8 @@ class PersonalInfo(models.Model):
         today = datetime.date.today()
         try:
             birthday = born.replace(year=today.year)
-        except ValueError: # raised when birth date is February 29 and the current year is not a leap year
-            birthday = born.replace(year=today.year, day=born.day-1)
+        except ValueError:  # raised when birth date is February 29 and the current year is not a leap year
+            birthday = born.replace(year=today.year, day=born.day - 1)
         if birthday > today:
             return today.year - born.year - 1
         else:

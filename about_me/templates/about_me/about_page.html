@@ -10,3 +10,12 @@
         </div>
     </div>
 {% endblock %}
+
+{% block body_end %}
+    <!-- LIBS -->
+    <script src="{{ STATIC_URL }}js/libs/jquery-2.0.3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/Chart.js"></script>
+
+    <!-- SITE SCRIPTS -->
+    <script src="{{ STATIC_URL }}js/script.js"></script>
+{% endblock %}

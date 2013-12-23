@@ -1,12 +1,10 @@
 <b>{{ skill }}:</b>
 {% for competence in competences %}
-    <span title="{{ competence.level }} / 100">
-        {% if competence.technology.technology_url %}
-            <a href="{{ competence.technology.technology_url }}">
-                {{ competence.technology }}</a>{% if not forloop.last %}, {% endif %}
-        {% else %}
-            {{ competence.technology }}{% if not forloop.last %}, {% endif %}
-        {% endif %}
-    </span>
+    {% if competence.technology.technology_url %}
+        <a href="{{ competence.technology.technology_url }}">
+            {{ competence.technology }}</a>{% if not forloop.last %}, {% endif %}
+    {% else %}
+        {{ competence.technology }}{% if not forloop.last %}, {% endif %}
+    {% endif %}
 {% endfor %}
 <br>

@@ -2,6 +2,6 @@
 @import url("content.css");
 
 
-.header {
+.header, .detailed_block {
     display: none;
 }
