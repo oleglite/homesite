@@ -3,9 +3,14 @@ function getRandomColor(minColor, maxColor) {
         minColor = 0;
     }
     if (maxColor === undefined) {
-        maxColor = 0xffffff;
+        maxColor = 1;
     }
-    return '#' + (0x1000000 + minColor + (Math.random()) * (maxColor - minColor)).toString(16).substr(1, 6)
+    c = maxColor - minColor;
+    var r = Math.round((minColor + c * Math.random()) * 255),
+        g = Math.round((minColor + c * Math.random()) * 255),
+        b = Math.round((minColor + c * Math.random()) * 255);
+    console.log(r, g, b);
+    return '#' + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).substr(1, 6)
 }
 
 function showChart(canvasId, sections) {
@@ -14,7 +19,7 @@ function showChart(canvasId, sections) {
     for (i = 0; i < sections.length; i++) {
         section = sections[i];
         if (!section.color) {
-            section.color = getRandomColor(0, 0xeeeeee);
+            section.color = getRandomColor(0,.8);
         }
     }
 
