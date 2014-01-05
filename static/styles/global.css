@@ -6,10 +6,6 @@ a:hover {
     text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, b {
-    color: #333333;
-}
-
 h1, h2, h3, h4 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-bottom: 6px;
