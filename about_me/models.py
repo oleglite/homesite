@@ -1,9 +1,12 @@
 import datetime
 import collections
+from babel.dates import format_timedelta, format_date
 
 from django.db import models
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.utils.translation import to_locale, get_language
+from django.utils.translation import ugettext as _
 import validators
 
 
@@ -12,8 +15,12 @@ import validators
 validate_url = URLValidator()
 
 
-def formatted_date(self, date):
-    return date.strftime("%b %Y")
+def formatted_date(date):
+    return format_date(date, "LLLL yyyy", locale=get_locale())
+
+
+def get_locale():
+    return to_locale(get_language())
 
 
 class Location(models.Model):
@@ -47,6 +54,10 @@ class PersonalInfo(models.Model):
             return today.year - born.year - 1
         else:
             return today.year - born.year
+
+    def age_formatted(self):
+        delta = datetime.timedelta(self.age() * 365)
+        return format_timedelta(delta, granularity='year', locale=get_locale())
 
     def skills(self):
         """ return dict of skills with list of person's technology competences as value """
@@ -124,14 +135,14 @@ class Education(models.Model):
 
     def date_range(self):
         start_str = self.formatted_start_date()
-        completion_str = 'Current' if self.is_current() else self.formatted_completion_date()
+        completion_str = _('Today') if self.is_current() else self.formatted_completion_date()
         return '%s - %s' % (start_str, completion_str)
 
     def formatted_start_date(self):
-        return self.start_date.strftime("%b %Y")
+        return formatted_date(self.start_date)
 
     def formatted_completion_date(self):
-        return self.completion_date.strftime("%b %Y")
+        return formatted_date(self.completion_date)
 
     def __unicode__(self):
         return u'%s - %s' % (self.person, self.school)
