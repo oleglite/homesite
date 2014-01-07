@@ -19,15 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ut^h3v78imbfp&5xy+vrxz(_+lwodudfg!pn=cd@5o)&-h#14h'
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -98,3 +98,9 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+
+try:
+    from local_settings import *
+except Exception as error:
+    print error.message
