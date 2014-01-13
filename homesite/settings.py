@@ -46,8 +46,8 @@ INSTALLED_APPS = (
 
     'south',
 
-    'about_me',
-    'extras',
+    'apps.about_me',
+    'libs.extras',
 )
 
 MIDDLEWARE_CLASSES = (
