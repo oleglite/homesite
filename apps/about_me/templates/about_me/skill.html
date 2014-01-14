@@ -1,0 +1,10 @@
+<span class="subparaghaph__title">{{ skill }}:</span>
+{% for competence in competences %}
+    {% if competence.technology.technology_url %}
+        <a href="{{ competence.technology.technology_url }}">
+            {{ competence.technology }}</a>{% if not forloop.last %}, {% endif %}
+    {% else %}
+        {{ competence.technology }}{% if not forloop.last %}, {% endif %}
+    {% endif %}
+{% endfor %}
+<br>

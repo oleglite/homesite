@@ -1,0 +1,5 @@
+{% load html_tags %}
+
+{% for technology in technologies %}
+    {% link_or_text technology technology.technology_url %}{% if not forloop.last %}, {% endif %}
+{% endfor %}

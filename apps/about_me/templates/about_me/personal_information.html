@@ -1,0 +1,75 @@
+{% load markdown_filter %}
+
+<!-- PERSONAL ATTRIBUTES -->
+<div class="person_attrs">
+    <!-- Location -->
+    <div>{{ person.age_formatted }}</div>
+    <div>{{ person.location }}</div>
+
+    <!-- Email -->
+    <div>
+        {% if person.email %}
+            <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- ABOUT ME -->
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>О себе</h4>
+    </div>
+    <div class="paragraph__body">
+        <div class="markdown_block">
+            {{ person.summary|use_markdown }}
+        </div>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Навыки</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for skill, competences in person.skills.iteritems %}
+            {% include "about_me/skill.html" %}
+        {% endfor %}
+
+        <!-- SKILLS DETAILED -->
+        <div class="detailed_block skills_detailed">
+            <div id="skills_detailed_button" class="detailed_button">Подробнее...</div>
+            <div class="detailed_content">
+                <h4 class="centered_header">Соотношения навыков</h4>
+                {% for skill, competences in person.skills.iteritems %}
+                    {% include "about_me/skill_chart.html" %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Проекты</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for project in person.project_set.all %}
+            {% include "about_me/project.html" %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>Образование</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for education in person.education_set.all %}
+            {% include "about_me/education.html" %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{% load html_tags %}
+
+<div class="paragraph">
+    <div class="paragraph__title">
+        <h4>{{ person }}</h4>
+    </div>
+    <div class="paragraph__body">
+        {% for contact in person.contact_set.all %}
+            {{ contact.name }}:
+            {% if contact.is_link %}
+                {% link_or_text href=contact.value %}
+            {% elif contact.name == 'email' %}
+                {% email contact.value %}
+            {% else %}
+                {{ contact.value }}
+            {% endif %}
+            <br>
+        {% endfor %}
+    </div>
+</div>
