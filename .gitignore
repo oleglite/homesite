@@ -1,5 +1,6 @@
 TODO
-*local_settings.py
+.env
+*.backup
 
 # database
 db.sqlite3

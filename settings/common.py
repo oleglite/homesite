@@ -8,49 +8,50 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-import dj_database_url
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get['SECRET_KEY']
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECRET_KEY = os.environ['SECRET_KEY']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-TEMPLATE_DEBUG = False
-
-# Allow all host headers
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
-
-INSTALLED_APPS = (
-    'django.contrib.admin',
+DJANGO_APPS = (
+    # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Useful template tags:
+    'django.contrib.humanize',
+
+    # Admin panel and documentation:
     'django.contrib.admin',
+    'django.contrib.admindocs',
+)
 
+THIRD_PARTY_APPS = (
+    # Database migration helpers:
     'south',
+)
 
+LOCAL_APPS = (
+    # Apps
     'apps.about_me',
+
+    # Libs
     'libs.extras',
 )
 
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+
 MIDDLEWARE_CLASSES = (
+    # Default Django middleware.
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,37 +61,24 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'homesite.urls'
-
 WSGI_APPLICATION = 'homesite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config()
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'ru-ru'
-
 TIME_ZONE = 'Europe/Minsk'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_ROOT = 'staticfiles'
-
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -98,9 +86,3 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
-
-
-try:
-    from local_settings import *
-except Exception as error:
-    print error.message
