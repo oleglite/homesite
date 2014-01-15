@@ -1,0 +1,49 @@
+.content {
+    position: relative;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+}
+
+.content__title {
+    font-weight: 500;
+}
+
+.person_attrs, .paragraph__body, .subparaghaph__body {
+    margin-left: 20px;
+}
+
+.subparaghaph__title {
+    font-weight: bold;
+    color: #222;
+}
+
+.subparaghaph__body {
+    margin-bottom: 8px;
+}
+
+.centered_header {
+    text-align: center;
+}
+
+.detailed_button {
+    display: inline-block;
+    margin: 6px 0 -10px 18px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.detailed_button:hover {
+    text-decoration: underline;
+}
+
+.detailed_content {
+    display: none;
+}
+
+.skills_detailed .skill_chart_block {
+    display: inline-block;
+}
+
+.chart_data {
+    display: none;
+}
