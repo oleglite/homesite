@@ -6,7 +6,6 @@
     </div>
     <div class="header__nav-buttons">
         <div class="menu"><!--
-            --><a class="menu__link {% active request "^/$" %}" href="#">Home</a><!--
             --><a class="menu__link {% active request "^/about_me$" %}" href="{% url 'about_me' %}">About Me</a><!--
             --><a class="menu__link {% active request "^/contacts$" %}" href="{% url 'contacts' %}">Contacts</a>
         </div>

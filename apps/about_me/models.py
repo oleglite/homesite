@@ -10,8 +10,6 @@ from django.utils.translation import ugettext as _
 from apps.about_me import validators
 
 
-# https://github.com/ckelly/django-resume/blob/master/django_resume/resume/models.py
-
 validate_url = URLValidator()
 
 

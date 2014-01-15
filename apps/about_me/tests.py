@@ -54,7 +54,6 @@ class EducationFormTest(TestCase):
     def test_clean__validate_start_date_less_than_completion_date(self):
         form = self.create_form(start_date=date(20, 10, 2013), completion_date=date(10, 10, 2013))
         self.assertFalse(form.is_valid())
-        print form.errors
         self.assertEqual(len(form.errors), 1)
         self.assertEqual(form.errors['__all__'], [u'Start date must be earlier than completion date.'])
 
