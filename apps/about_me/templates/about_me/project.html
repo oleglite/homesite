@@ -1,3 +1,5 @@
+{% load markdown_filter %}
+
 <div class="subparaghaph">
     <div class="subparaghaph__title">
         {% if project.project_url %}
@@ -20,7 +22,7 @@
         {% endif %}
 
         {% if project.summary %}
-            {{ project.summary }}<br>
+            {{ project.summary|use_markdown }}<br>
         {% endif %}
     </div>
 </div>
